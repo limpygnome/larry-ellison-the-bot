@@ -106,6 +106,8 @@ exports.handler = function(event, context, callback) {
     console.log("received message - channel: " + channelName + ", user: " + username + ", text: " + text);
 
     var reply = null;
+    var replyUsername = "Larry Ellison";
+    var replyIcon = ":larry:";
 
     if (matchesSome(text, ["larry"]))
       reply = pick([
@@ -149,6 +151,14 @@ exports.handler = function(event, context, callback) {
         "can you at least give me a name for my island? :troll:"
       ]);
 
+    if (matchesAll(text, [":kappa:"])) {
+      reply = pick([
+        ":kappaross:"
+      ]);
+      replyUsername = "Josh Kappa";
+      replyIcon = ":kappa:";
+    }
+
     // when running as app, we have to use incoming hook to make message...
     if (useIncomingHookForReply) {
       if (reply) {
@@ -160,9 +170,9 @@ exports.handler = function(event, context, callback) {
     // when invoked by outgoing hook, we have more power...
     } else if (reply) {
       done(true, {
-          "username" : "Larry Ellison",
+          "username" : replyUsername,
           "text" : reply,
-          "icon_emoji": ":larry:",
+          "icon_emoji": replyIcon,
       });
     }
   };
