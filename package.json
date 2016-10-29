@@ -1,0 +1,15 @@
+{
+  "name": "larry-ellison-the-bot",
+  "version": "0.0.0",
+  "description": "Larry Ellison bot for Slack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "limpygnome",
+  "license": "MIT License",
+  "dependencies": {
+    "https": "^1.0.0",
+    "url": "^0.11.0"
+  }
+}
