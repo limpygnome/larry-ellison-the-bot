@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <body>
+
+    <h1>
+      1. Get OAuth 'code' (Authorization Request)
+    </h1>
+
+    <h2>
+        lots of perms
+    </h2>
+    <form method="get" action="https://slack.com/oauth/authorize">
+      <input type="hidden" name="client_id" value="32480718391.97736992227" />
+      <input type="hidden" name="scope" value="channels:read,chat:write:bot,chat:write:user,emoji:read,im:read,im:write,reactions:read,reactions:write,users:read,users:write,incoming-webhook,bot" />
+      <input type="submit" value="Request OAuth Access" />
+    </form>
+
+
+    <h2>
+        few perms / easier
+    </h2>
+    <!--
+      https://api.slack.com/docs/slack-button#
+    -->
+    <a href="https://slack.com/oauth/authorize?scope=incoming-webhook,bot&client_id=32480718391.97736992227"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
+
+    <h1>
+        2. Confirm code (Authorization Grant)
+    </h1>
+
+    <!--
+      https://api.slack.com/docs/oauth
+      https://api.slack.com/methods/oauth.access
+    -->
+
+    <form method="get" action="https://slack.com/oauth/oauth.access">
+      <input type="hidden" name="client_id" value="32480718391.97736992227" />
+      Client secret: <input type="text" name="client_secret" />
+      Code from step 1: <input type="text" name="code" />
+      <input type="submit" value="Request OAuth Access" />
+    </form>
+
+  </body>
+</html>
